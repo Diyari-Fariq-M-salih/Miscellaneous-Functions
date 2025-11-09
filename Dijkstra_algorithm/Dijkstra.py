@@ -14,6 +14,29 @@ class Graph:
        # Initialize the values of all nodes with infinity
        distances = {node: float("inf") for node in self.graph}
        distances[source] = 0  # Set the source value to 0
+        # Initialize a priority queue
+       pq = [(0, source)]
+       heapify(pq)
+
+       # Create a set to hold visited nodes
+       visited = set()
+
+       while pq:  # While the priority queue isn't empty
+        current_distance, current_node = heappop(pq)
+
+        if current_node in visited:
+            continue 
+        visited.add(current_node)
+
+        for neighbor, weight in self.graph[current_node].items():
+            # Calculate the distance from current_node to the neighbor
+            tentative_distance = current_distance + weight
+            if tentative_distance < distances[neighbor]:
+                distances[neighbor] = tentative_distance
+                heappush(pq, (tentative_distance, neighbor))
+
+        return distances
+
 
 
 G = Graph()
@@ -54,11 +77,11 @@ G.add_edge("G", "F", 2.5)
 
 print(G.graph)  # Print the adjacency list representation of the graph
 
-#tesing heap functions
-pq = [(3, "A"), (1, "C"), (7, "D")]
+# #tesing heap functions
+# pq = [(3, "A"), (1, "C"), (7, "D")]
 
-# Convert into a queue object
-heapify(pq)
+# # Convert into a queue object
+# heapify(pq)
 
-# Return the highest priority value
-print(heappop(pq))
+# # Return the highest priority value
+# print(heappop(pq))
