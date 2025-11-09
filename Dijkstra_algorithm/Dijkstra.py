@@ -43,6 +43,24 @@ class Graph:
                     predecessors[neighbor] = node
 
         return distances, predecessors
+       
+   def shortest_path(self, source: str, target: str):
+        # Generate the predecessors dict
+        _, predecessors = self.shortest_distances(source)
+
+        path = []
+        current_node = target
+
+        # Backtrack from the target node using predecessors
+        while current_node:
+            path.append(current_node)
+            current_node = predecessors[current_node]
+
+        # Reverse the path and return it
+        path.reverse()
+
+        return path
+
 
 
 
