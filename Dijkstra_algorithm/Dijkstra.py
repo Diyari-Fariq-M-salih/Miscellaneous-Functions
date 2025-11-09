@@ -67,15 +67,21 @@ G.add_edge("E", "C", 2.8)
 G.add_edge("E", "G", 7)
 
 # Add F and its neighbors
-G.add_edge("E", "C", 3.5)
-G.add_edge("E", "G", 2.5)
+G.add_edge("F", "C", 3.5)
+G.add_edge("F", "G", 2.5)
 
 # Add G and its neighbors
 G.add_edge("G", "D", 10)
 G.add_edge("G", "E", 7)
 G.add_edge("G", "F", 2.5)
 
-print(G.graph)  # Print the adjacency list representation of the graph
+# print(G.graph)  # Print the adjacency list representation of the graph
+
+distances = G.shortest_distances("B")
+print(distances, "\n")
+
+to_F = distances["F"]
+print(f"The shortest distance from B to F is {to_F}")
 
 # #tesing heap functions
 # pq = [(3, "A"), (1, "C"), (7, "D")]
