@@ -7,6 +7,12 @@ class Graph:
            self.graph[node1] = {}  # If not, create the node
        self.graph[node1][node2] = weight  # Else, add a connection to its neighbor
 
+   def shortest_distances(self, source: str):
+       # Initialize the values of all nodes with infinity
+       distances = {node: float("inf") for node in self.graph}
+       distances[source] = 0  # Set the source value to 0
+
+
 G = Graph()
 
 # Add A and its neighbors
