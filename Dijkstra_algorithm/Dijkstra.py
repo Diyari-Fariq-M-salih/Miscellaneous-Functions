@@ -1,3 +1,6 @@
+from heapq import heapify, heappop, heappush
+# Dijkstra's algorithm implementation in Python, using a priority queue (min-heap)
+
 class Graph:
    def __init__(self, graph: dict = {}):
        self.graph = graph  # A dictionary for the adjacency list
@@ -50,3 +53,12 @@ G.add_edge("G", "E", 7)
 G.add_edge("G", "F", 2.5)
 
 print(G.graph)  # Print the adjacency list representation of the graph
+
+#tesing heap functions
+pq = [(3, "A"), (1, "C"), (7, "D")]
+
+# Convert into a queue object
+heapify(pq)
+
+# Return the highest priority value
+print(heappop(pq))
