@@ -35,7 +35,15 @@ class Graph:
                 distances[neighbor] = tentative_distance
                 heappush(pq, (tentative_distance, neighbor))
 
-        return distances
+        predecessors = {node: None for node in self.graph}
+
+        for node, distance in distances.items():
+            for neighbor, weight in self.graph[node].items():
+                if distances[neighbor] == distance + weight:
+                    predecessors[neighbor] = node
+
+        return distances, predecessors
+
 
 
 
