@@ -97,4 +97,4 @@ G.add_edge("G", "D", 10)
 G.add_edge("G", "E", 7)
 G.add_edge("G", "F", 2.5)
 
-print(G.shortest_path("B", "F"))
+print(G.shortest_path("A", "F"))
